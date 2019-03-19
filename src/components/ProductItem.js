@@ -5,6 +5,10 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   background-color: #5e96d1;
+  border: none;
+  color: white;
+  border-radius: 12px;
+  font-size: 8pt;
 `
 
 const ProductItem = ({ product, onAddToCartClicked }) => (

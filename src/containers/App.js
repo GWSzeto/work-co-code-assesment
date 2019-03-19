@@ -3,17 +3,22 @@ import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 import styled from 'styled-components'
 
-const StyledProductsContainer = styled(ProductsContainer)`
-  display: flex;
-  flex-wrap: wrap;
+const Title = styled.h2`
+  font-weight: 900;
+  font-size: 26pt;
+`
+const Line = styled.hr`
+  margin-top: -0.5em;
+  color: #e7e7e7;
+  margin-top: -1em;
 `
 
-const App = () => (
+const App = className => (
   <div>
-    <h2>Acme</h2>
-    <hr/>
+    <Title>Acme Store</Title>
+    <Line/>
     <ProductsContainer />
-    <hr/>
+    <Line/>
     <CartContainer />
   </div>
 )
