@@ -7,8 +7,10 @@ const Button = styled.button`
   background-color: #5e96d1;
   border: none;
   color: white;
-  border-radius: 12px;
+  border-radius: 50px;
   font-size: 8pt;
+  height: 2.5em;
+  width: 10em;
 `
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
@@ -20,7 +22,7 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
     <Button
       onClick={onAddToCartClicked}
       disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+      {product.inventory > 0 ? 'ADD TO CART' : 'Sold Out'}
     </Button>
   </div>
 )
