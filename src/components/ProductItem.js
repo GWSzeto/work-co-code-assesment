@@ -13,17 +13,33 @@ const Button = styled.button`
   width: 10em;
 `
 
-const ProductItem = ({ product, onAddToCartClicked }) => (
-  <div style={{ marginBottom: 20 }}>
-    <Product
-      title={product.title}
-      price={product.price}
-      inventory={product.inventory} />
-    <Button
-      onClick={onAddToCartClicked}
-      disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'ADD TO CART' : 'Sold Out'}
-    </Button>
+const Image = styled.img`
+  display: flex;
+  height: 20em;
+`
+
+const ProductInfo = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  flex: 2 1;
+  padding-left: 3em;
+`
+
+const ProductItem = ({className, product, onAddToCartClicked }) => (
+  <div className={className}>
+    <Image src={product.image} alt={product.title}/> 
+    <ProductInfo>
+      <Product
+        title={product.title}
+        price={product.price}
+        inventory={product.inventory}
+        image={product.image} />
+      <Button
+        onClick={onAddToCartClicked}
+        disabled={product.inventory > 0 ? '' : 'disabled'}>
+        {product.inventory > 0 ? 'ADD TO CART' : 'Sold Out'}
+      </Button>
+    </ProductInfo>
   </div>
 )
 
@@ -36,4 +52,10 @@ ProductItem.propTypes = {
   onAddToCartClicked: PropTypes.func.isRequired
 }
 
-export default ProductItem
+export default styled(ProductItem)`
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+  padding-bottom: 2em;
+  border-radius: 3em;
+`

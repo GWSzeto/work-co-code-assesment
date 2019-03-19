@@ -1,9 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const Product = ({ price, inventory, title }) => (
-  <div>
-    {title} - &#36;{price}{inventory ? ` x ${inventory}` : null}
+const Title = styled.h3`
+  display: flex;
+  flex: 1 1 80%;
+  font-size: 18pt;
+  font-weight: 900;
+  margin-bottom: 0;
+`
+
+const Price = styled.div`
+  display: flex;
+  flex: 1 1 5%;
+  font-weight: 50;
+`
+
+const Inventory = styled.div`
+  color: #9b9b9b;
+`
+
+const Product = ({className ,price, inventory, title, image}) => (
+  <div className={className}>
+    <Title>{title}</Title>
+    <Price>{`$${price}`}</Price>
+    <Inventory>{inventory ? `${inventory} REMAINING` : null}</Inventory>
   </div>
 )
 
@@ -13,4 +34,10 @@ Product.propTypes = {
   title: PropTypes.string
 }
 
-export default Product
+export default styled(Product)`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  padding-bottom: 2em;
+  flex: 1 1 100%;
+`

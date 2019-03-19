@@ -13,4 +13,8 @@ ProductsList.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-export default ProductsList
+export default styled(ProductsList)`
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+`

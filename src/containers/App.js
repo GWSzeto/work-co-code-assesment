@@ -7,6 +7,7 @@ const Title = styled.h2`
   font-weight: 900;
   font-size: 26pt;
 `
+
 const Line = styled.hr`
   margin-top: -0.5em;
   color: #e7e7e7;
