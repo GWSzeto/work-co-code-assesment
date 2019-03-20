@@ -57,12 +57,16 @@ const EmptyCartText = styled.p`
   color: #a6a6a6;
 `
 
-const ProductContainer = styled.div`
-  display: flex;
-  flex: 1 1 100%;
-`
+// const ProductContainer = styled.div`
+//   display: flex;
+//   flex: 1 1 100%;
+// `
 
-const Cart  = ({ modalOpen, products, total, onCheckoutClicked, addToCart, removeFromCart, toggleModal }) => {
+const dummyFunc = () => {
+  console.log("got triggered")
+}
+
+const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -72,8 +76,6 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, addToCart, remov
         quantity={product.quantity}
         id={product.id}
         image={product.image}
-        onAddToCartClicked={() => addToCart(product.id)}
-        onRemoveFromCartClicked={removeFromCart}
         key={product.id}
       />
     )
@@ -85,7 +87,7 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, addToCart, remov
   )
 
   return (
-    <Modal open={modalOpen} onClose={toggleModal} styles={modalStyles}>
+    <Modal open={modalOpen} onClose={toggleModal} styles={modalStyles} >
       <CartLayout>
         <Title>Your Cart</Title>
         <Line />

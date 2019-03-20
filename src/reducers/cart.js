@@ -36,6 +36,7 @@ const quantityById = (state = initialState.quantityById, action) => {
           [productId]: productQuantity
         }
       }
+      break
     default:
       return state
   }

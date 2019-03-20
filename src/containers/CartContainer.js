@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { checkout, toggleModal, addToCart, removeFromCart } from '../actions'
+import { checkout, toggleModal } from '../actions'
 import { getTotal, getCartProducts } from '../reducers'
 import Cart from '../components/Cart'
 
@@ -11,8 +11,6 @@ const CartContainer = ({ modalOpen, products, total, checkout, toggleModal }) =>
     total={total}
     onCheckoutClicked={() => checkout(products)}
     modalOpen={modalOpen}
-    addToCart={addToCart}
-    removeFromCart={removeFromCart}
     toggleModal={toggleModal} />
 )
 
@@ -33,14 +31,7 @@ const mapStateToProps = (state) => ({
   total: getTotal(state)
 })
 
-const mapDispatchToProps = (state) => ({
-  checkout,
-  toggleModal,
-  addToCart,
-  removeFromCart
-})
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  {checkout, toggleModal}
 )(CartContainer)

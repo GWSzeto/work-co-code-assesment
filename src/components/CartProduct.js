@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import InventoryContainer from '../containers/InventoryContainer'
 
 const ProductInfo = styled.div`
     display: flex;
     flex-flow: row wrap;
     flex: 1 1 40%;
-    padding-left: 1.5em;
+    padding: 0 0 1em 1.5em;
 `
 
 const Title = styled.h3`
@@ -31,21 +32,14 @@ const Image = styled.img`
     width: 15em;
 `
 
-const Button = styled.button`
-    display: flex;
-    background-color: #f5f5f5;
-    border: none;
-    color: #8d929b;
-`
-
-const CartProduct = ({className, price, quantity, title, id, image, onAddToCartClicked, onRemoveFromCartClicked}) => (
+const CartProduct = ({className, price, quantity, title, id, image}) => (
     <div className={className}>
         <Image src={image} alt={title} />
         <ProductInfo>
             <Title>{title}</Title>
             <Price>{`$${price}`}</Price>
-            <Button>-</Button>
         </ProductInfo>
+        <InventoryContainer quantity={quantity} id={id}/>
     </div>
 )
 

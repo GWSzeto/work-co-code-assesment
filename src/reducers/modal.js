@@ -12,7 +12,7 @@ const toggleModal = (state = initialState, action) => {
                 open: !state.open
             }
         default:
-            return initialState
+            return state
     }
 }
 
