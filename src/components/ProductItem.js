@@ -8,7 +8,7 @@ const Button = styled.button`
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 8pt;
+  font-size: 12pt;
   height: 2.5em;
   width: 10em;
 `
@@ -16,6 +16,7 @@ const Button = styled.button`
 const Image = styled.img`
   display: flex;
   height: 20em;
+  border-radius: 1em 0 0 1em;
 `
 
 const ProductInfo = styled.div`
@@ -56,6 +57,6 @@ export default styled(ProductItem)`
   display: flex;
   flex-flow: row wrap;
   background-color: white;
-  padding-bottom: 2em;
-  border-radius: 3em;
+  margin-bottom: 1em;
+  border-radius: 1em;
 `

@@ -5,7 +5,6 @@ import { addToCart } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
-import styled from 'styled-components'
 
 const ProductsContainer = ({ products, addToCart }) => (
   <ProductsList title="Products">

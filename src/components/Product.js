@@ -5,18 +5,21 @@ import styled from 'styled-components'
 const Title = styled.h3`
   display: flex;
   flex: 1 1 80%;
-  font-size: 18pt;
+  font-size: 24pt;
   font-weight: 900;
   margin-bottom: 0;
 `
 
 const Price = styled.div`
   display: flex;
-  flex: 1 1 5%;
+  flex: 1 1 20%;
   font-weight: 50;
+  font-size: 16pt;
+  padding-top: 2.75em;
 `
 
 const Inventory = styled.div`
+  margin-top: -2em;
   color: #9b9b9b;
 `
 
@@ -37,7 +40,6 @@ Product.propTypes = {
 export default styled(Product)`
   display: flex;
   flex-flow: row wrap;
-  align-items: baseline;
   padding-bottom: 2em;
   flex: 1 1 100%;
 `

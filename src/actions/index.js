@@ -1,6 +1,10 @@
 import shop from '../api/shop'
 import * as types from '../constants/ActionTypes'
 
+export const toggleModal = () => ({
+  type: types.TOGGLE_MODAL
+})
+
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products
