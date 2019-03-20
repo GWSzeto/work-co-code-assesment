@@ -13,10 +13,11 @@ const Title = styled.h1`
   font-size: 32pt;
 `
 
-const Line = styled.hr`
-  margin-top: -0.5em;
+export const Line = styled.hr`
+  display: flex;
   color: #e7e7e7;
-  margin-top: -1em;
+  flex: 1 1 100%;
+  margin-bottom: 1.5em;
 `
 
 const ShoppingCart = styled.img`

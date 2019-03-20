@@ -26,6 +26,7 @@ const Inventory = styled.div`
 const Image = styled.img`
   display: flex;
   height: 20em;
+  width: 30em;
   border-radius: 1em 0 0 1em;
 `
 
@@ -48,6 +49,7 @@ const Product = ({className ,price, inventory, title, image}) => (
 )
 
 Product.propTypes = {
+  className: PropTypes.string,
   price: PropTypes.number,
   inventory: PropTypes.number,
   title: PropTypes.string
