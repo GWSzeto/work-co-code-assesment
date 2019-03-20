@@ -19,15 +19,31 @@ const Price = styled.div`
 `
 
 const Inventory = styled.div`
-  margin-top: -2em;
+  margin-top: -7em;
   color: #9b9b9b;
+`
+
+const Image = styled.img`
+  display: flex;
+  height: 20em;
+  border-radius: 1em 0 0 1em;
+`
+
+const ProductInfo = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 40%;
+  padding-left: 3em;
 `
 
 const Product = ({className ,price, inventory, title, image}) => (
   <div className={className}>
-    <Title>{title}</Title>
-    <Price>{`$${price}`}</Price>
-    <Inventory>{inventory ? `${inventory} REMAINING` : null}</Inventory>
+    <Image src={image} alt={title}/> 
+    <ProductInfo>
+      <Title>{title}</Title>
+      <Price>{`$${price}`}</Price>
+      <Inventory>{inventory ? `${inventory} REMAINING` : null}</Inventory>
+    </ProductInfo>
   </div>
 )
 
@@ -40,6 +56,5 @@ Product.propTypes = {
 export default styled(Product)`
   display: flex;
   flex-flow: row wrap;
-  padding-bottom: 2em;
   flex: 1 1 100%;
 `

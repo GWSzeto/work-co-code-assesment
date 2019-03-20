@@ -4,6 +4,8 @@ import Product from './Product'
 import styled from 'styled-components'
 
 const Button = styled.button`
+  display: inline-block;
+  position: absolute;
   background-color: #5e96d1;
   border: none;
   color: white;
@@ -11,36 +13,21 @@ const Button = styled.button`
   font-size: 12pt;
   height: 2.5em;
   width: 10em;
-`
-
-const Image = styled.img`
-  display: flex;
-  height: 20em;
-  border-radius: 1em 0 0 1em;
-`
-
-const ProductInfo = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  flex: 2 1;
-  padding-left: 3em;
+  margin: 14em 0 0 33em;
 `
 
 const ProductItem = ({className, product, onAddToCartClicked }) => (
   <div className={className}>
-    <Image src={product.image} alt={product.title}/> 
-    <ProductInfo>
-      <Product
-        title={product.title}
-        price={product.price}
-        inventory={product.inventory}
-        image={product.image} />
-      <Button
-        onClick={onAddToCartClicked}
-        disabled={product.inventory > 0 ? '' : 'disabled'}>
-        {product.inventory > 0 ? 'ADD TO CART' : 'Sold Out'}
-      </Button>
-    </ProductInfo>
+    <Product
+      title={product.title}
+      price={product.price}
+      inventory={product.inventory}
+      image={product.image} />
+    <Button
+      onClick={onAddToCartClicked}
+      disabled={product.inventory > 0 ? '' : 'disabled'}>
+      {product.inventory > 0 ? 'ADD TO CART' : 'Sold Out'}
+    </Button>
   </div>
 )
 
@@ -55,7 +42,6 @@ ProductItem.propTypes = {
 
 export default styled(ProductItem)`
   display: flex;
-  flex-flow: row wrap;
   background-color: white;
   margin-bottom: 1em;
   border-radius: 1em;
