@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import { Line } from '../containers/App'
 import shoppingCart from '../shopping-cart.svg'
 
-
 const modalStyles = {
   modal: {
     display: "inline-block",
     width: "50em",
     height: "50em",
     "border-radius" : "1em",
+    "overflow-y": "auto",
   },
   closeIcon: {
     height: "3em",
@@ -57,16 +57,7 @@ const EmptyCartText = styled.p`
   color: #a6a6a6;
 `
 
-// const ProductContainer = styled.div`
-//   display: flex;
-//   flex: 1 1 100%;
-// `
-
-const dummyFunc = () => {
-  console.log("got triggered")
-}
-
-const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal }) => {
+const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, removeFromCart }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -76,6 +67,7 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal }) =
         quantity={product.quantity}
         id={product.id}
         image={product.image}
+        onRemoveFromCartClicked={() => removeFromCart(product.id)}
         key={product.id}
       />
     )

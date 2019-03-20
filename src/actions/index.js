@@ -10,10 +10,7 @@ const receiveProducts = products => ({
   products: products
 })
 
-export const removeFromCart = productId => ({
-  type: types.REMOVE_FROM_CART,
-  productId
-})
+
 
 export const getAllProducts = () => dispatch => {
   shop.getProducts(products => {
@@ -40,6 +37,19 @@ const decrementFromCartUnsafe = productId => ({
 export const decrementFromCart = productId => (dispatch, getState) => {
   if (getState().cart.quantityById[productId] > 0) {
     dispatch(decrementFromCartUnsafe(productId))
+  }
+}
+
+const removeFromCartUnsafe = (productId, quantity) => ({
+  type: types.REMOVE_FROM_CART,
+  productId,
+  quantity
+})
+
+export const removeFromCart = productId => (dispatch, getState) => {
+  const quantity = getState().cart.quantityById[productId] 
+  if (quantity > 0) {
+    dispatch(removeFromCartUnsafe(productId, quantity))
   }
 }
 

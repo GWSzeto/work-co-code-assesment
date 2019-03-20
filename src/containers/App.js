@@ -45,7 +45,7 @@ const CartText = styled.p`
   display: flex;
 `
 
-const App = ({modalOpen, toggleModal}) => (
+const App = ({ toggleModal }) => (
   <div>
     <Header>
       <Title>Acme Store</Title>

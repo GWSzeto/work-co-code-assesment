@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { decrementFromCart, addToCart } from '../actions'
+import { decrementFromCart, addToCart, removeFromCart} from '../actions'
 import Inventory from '../components/Inventory'
 
-const InventoryContainer = ({quantity, id, addToCart, decrementFromCart}) => {
+const InventoryContainer = ({quantity, id, addToCart, decrementFromCart, }) => {
     return(
     <Inventory
         quantity={quantity}

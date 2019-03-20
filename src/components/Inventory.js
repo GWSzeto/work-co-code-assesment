@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Button = styled.button`
+const TickButton = styled.button`
     display: flex;
     background-color: #f5f5f5;
     border: none;
@@ -27,18 +27,18 @@ const TickerText = styled.p`
 
 const Inventory = ({className, quantity, onAddToCartClicked, onDecrementFromCartClicked}) => (
     <div className={className}>
-        <Button
+        <TickButton
           onClick={onDecrementFromCartClicked}
           side="left">
           <TickerText side="-">-</TickerText>
-        </Button>
+        </TickButton>
         <Quantity>{quantity}</Quantity>
-        <Button
+        <TickButton
           onClick={onAddToCartClicked}
           side="right"
         >
           <TickerText side="+">+</TickerText>
-        </Button>
+        </TickButton>
     </div>
 )
 

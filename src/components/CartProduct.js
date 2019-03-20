@@ -15,7 +15,6 @@ const Title = styled.h3`
     flex: 1 1 100%;
     font-size: 26pt;
     font-weight: 600;
-    margin-bottom: -5em;
     margin-top: 0;
 `
 
@@ -23,7 +22,7 @@ const Price = styled.div`
     display: flex;
     flex: 1 1 100%;
     font-size: 14pt;
-    margin-top: -1em;
+    margin-top: -2.5em;
 `
 
 const Image = styled.img`
@@ -32,12 +31,22 @@ const Image = styled.img`
     width: 15em;
 `
 
-const CartProduct = ({className, price, quantity, title, id, image}) => (
+const RemoveButton = styled.button`
+    display: flex;
+    border: none;
+    background-color: inherit;
+    align-items: baseline;
+    font-size: 16pt;
+    margin-bottom: -1.5em;
+    color: red;
+`
+const CartProduct = ({className, price, quantity, title, id, image, onRemoveFromCartClicked }) => (
     <div className={className}>
         <Image src={image} alt={title} />
         <ProductInfo>
             <Title>{title}</Title>
             <Price>{`$${price}`}</Price>
+            <RemoveButton onClick={onRemoveFromCartClicked}>Remove</RemoveButton>
         </ProductInfo>
         <InventoryContainer quantity={quantity} id={id}/>
     </div>
