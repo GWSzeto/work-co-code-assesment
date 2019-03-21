@@ -46,7 +46,10 @@ const CartProduct = ({className, price, quantity, title, id, image, onRemoveFrom
         <ProductInfo>
             <Title>{title}</Title>
             <Price>{`$${price}`}</Price>
-            <RemoveButton onClick={onRemoveFromCartClicked}>Remove</RemoveButton>
+            <RemoveButton 
+              onClick={onRemoveFromCartClicked}>
+              Remove
+            </RemoveButton>
         </ProductInfo>
         <InventoryContainer quantity={quantity} id={id}/>
     </div>
@@ -65,4 +68,8 @@ export default styled(CartProduct)`
     flex: 1 1 100%;
     padding-bottom: 1em;
     width: 40em;
+
+    @media only screen and (max-width: 768px) {
+        width: 48em;
+    }
 `

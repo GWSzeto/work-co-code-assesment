@@ -13,11 +13,6 @@ const Title = styled.h1`
   font-weight: 900;
   font-size: 32pt;
   margin-bottom: 0;
-
-  /* mobile */
-  @media only screen and (max-width: 768px) {
-    margin-bottom: 0
-  }
 `
 
 export const Line = styled.hr`
@@ -46,6 +41,11 @@ const Button = styled.button`
   background-color: inherit;
   align-items: baseline;
   font-size: 17pt;
+  transition-duration: 0.5s;
+
+  &:hover {
+    color: #3f7ec0;
+  }
 `
 
 const CartText = styled.p`
@@ -54,13 +54,15 @@ const CartText = styled.p`
 
 Modal.setAppElement(document.getElementById('root'))
 
-const App = ({ toggleModal }) => (
+const App = ({ quantity, toggleModal }) => (
   <div>
     <Header>
       <Title>Acme Store</Title>
       <Button onClick={toggleModal}>
         <ShoppingCart src={shoppingCart} alt=""/>
-        <CartText>Your cart is empty</CartText>
+        {quantity == 0 ? (
+          <CartText>Your cart is empty</CartText>
+        ) : null}
       </Button>
     </Header>
     <Line/>
@@ -70,7 +72,7 @@ const App = ({ toggleModal }) => (
 )
 
 const mapStateToProps = state => ({
-  modalOpen: state.modal.open
+  quantity: state.cart.addedIds.length
 })
 
 export default connect(

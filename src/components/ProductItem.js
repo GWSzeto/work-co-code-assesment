@@ -14,10 +14,20 @@ const Button = styled.button`
   height: 2.5em;
   width: 10em;
   margin: 14em 0 0 33em;
+  transition-duration: 0.2s;
 
-  @media only screen and (max-width: 768px) {
+  &:hover:enabled {
+    background-color: #3f7ec0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  @media only screen and (max-width: 365px) {
     margin: 26em 0 0 2em;
     font-size: 17pt;
+
   }
 `
 

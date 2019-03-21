@@ -8,26 +8,6 @@ import shoppingCart from '../shopping-cart.svg'
 import CartAmountText from './CartAmountText'
 import './Cart.css'
 
-const modalStyles = {
-  modal: {
-    display: "inline-block",
-    width: "50em",
-    height: "50em",
-    "border-radius" : "1em",
-    "overflow-y": "auto",
-  },
-  closeIcon: {
-    height: "3em",
-    width: "3em",
-    opacity: "0.3",
-  }
-}
-
-const modalClassNames = {
-  modal: "modal",
-  closeIcon: "closeIcon",
-}
-
 const CartLayout = styled.div`
   padding: 0 3em 0 3em;
   display: flex;
@@ -40,15 +20,25 @@ const Title = styled.h3`
   display: flex;
   flex: 1 1 100%;
   margin-bottom: 0;
+
+  @media only screen and (max-width: 365px) {
+    font-size: 42pt;
+    margin-bottom: 0.5em;
+  }
 `
 
 const EmptyCart = styled.div`
   display: flex;
   flex-flow: column wrap;
   height: 43em;
-  width: 44em;
+  width: 46.5em;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 365px) {
+    width: 103vh;
+    height: 160vh;
+  }
 `
 
 const ShoppingCart = styled.img`
@@ -64,6 +54,18 @@ const EmptyCartText = styled.p`
   color: #a6a6a6;
 `
 
+const CartWithProductsLayout = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 100%;
+  padding-bottom: 1em;
+  width: 40em;
+
+  @media only screen and (max-width: 768px) {
+    width: 48em;
+  }
+`
+
 const CheckoutButton = styled.button`
   display: flex;
   flex: 1 1 100%;
@@ -77,13 +79,31 @@ const CheckoutButton = styled.button`
   justify-content: center;
   height: 3em;
   width: 10em;
+  margin-bottom: 1.5em;
+
+  @media only screen and (max-width: 365px) {
+    width: 35em;
+    margin-left: -2em;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
 `
 
-const closeButton = styled.button`
+const CloseButton = styled.button`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   border: none;
   background-color: inherit;
-  font-size: 16pt;
+  font-size: 21pt;
   color: #9a9a9a;
+  margin: 0.3em 0 -1em -0.3em;
+
+
+  @media only screen and (max-width: 365px) {
+    font-size: 27pt;
+    margin: 0.5em 0 -1.5em -0%.5em;
+  }
 `
 
 const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, removeFromCart }) => {
@@ -111,22 +131,24 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, rem
   const taxes = subtotal * 0.08067838643
   const totalAmount = subtotal + taxes
   return (
-    <Modal isOpen={modalOpen} >
-      <closeButton onClick={toggleModal}>X</closeButton>
+    <Modal isOpen={modalOpen} className="Modal" overlayClassName="Overlay">
+      <CloseButton onClick={toggleModal}>X</CloseButton>
       <CartLayout>
         <Title>Your Cart</Title>
         <Line />
         <div>{nodes}</div>
         {hasProducts ? (
           <div>
-            <Line />
-            <CartAmountText title="Subtotal" amount={`$${parseFloat(subtotal).toFixed(2)}`} />
-            <CartAmountText title="Taxes" amount={`$${parseFloat(taxes).toFixed(2)}`} /> 
-            <Line />
-            <CartAmountText title="Total" amount={`$${parseFloat(totalAmount).toFixed(2)}`} />
+            <CartWithProductsLayout>
+              <Line />
+              <CartAmountText title="Subtotal" amount={`$${parseFloat(subtotal).toFixed(2)}`} />
+              <CartAmountText title="Taxes" amount={`$${parseFloat(taxes).toFixed(2)}`} /> 
+              <Line />
+              <CartAmountText title="Total" amount={`$${parseFloat(totalAmount).toFixed(2)}`} />
+            </CartWithProductsLayout>
             <CheckoutButton onClick={onCheckoutClicked}
               disabled={hasProducts ? '' : 'disabled'}>
-              CHECKOUT
+                CHECKOUT
             </CheckoutButton>
           </div>
         ) : null}

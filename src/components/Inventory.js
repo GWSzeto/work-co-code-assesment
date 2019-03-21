@@ -8,8 +8,19 @@ const TickButton = styled.button`
     border: none;
     height: 4em;
     width: 15em;
+    color: #8d929b;
     justify-content: center;
     border-radius: ${props => props.side === "left" ? "2em 0 0 2em" : "0 2em 2em 0"};
+    transition-duration: 0.2s;
+
+    &:disabled {
+        opacity: 0.5;
+    }
+
+    &:hover:enabled {
+        background-color: #5e97d1;
+        color: white;
+    }
 `
 
 const Quantity = styled.p`
@@ -21,13 +32,13 @@ const Quantity = styled.p`
 
 const TickerText = styled.p`
     font-size: 35pt;
-    color: #8d929b;
     margin-top: ${props => props.side === "-" ? "-0.08em" : "-.01em"};
 `
 
 const Inventory = ({className, quantity, onAddToCartClicked, onDecrementFromCartClicked}) => (
     <div className={className}>
         <TickButton
+          disabled={quantity > 1 ? '' : 'disabled'}
           onClick={onDecrementFromCartClicked}
           side="left">
           <TickerText side="-">-</TickerText>

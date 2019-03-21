@@ -9,7 +9,7 @@ const Title = styled.h3`
   font-weight: 900;
   margin-bottom: 0;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 365px) {
     flex: 1 1 70%;
     font-size: 30pt;
   }
@@ -20,9 +20,9 @@ const Price = styled.div`
   flex: 1 1 20%;
   font-weight: 50;
   font-size: 16pt;
-  padding-top: 2.75em;
+  padding-top: 2em;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 365px) {
     font-size: 22pt;
     margin-top: -7em;
   }
@@ -32,7 +32,7 @@ const Inventory = styled.div`
   margin-top: -7em;
   color: #9b9b9b;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 365px) {
     position: absolute;
     margin-top: 7em;
   }
@@ -44,7 +44,7 @@ const Image = styled.img`
   width: 30em;
   border-radius: 1em 0 0 1em;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 365px) {
     height: 26em;
     border-radius: 1em 1em 0 0;
     flex: 1 1 100%;
@@ -57,7 +57,7 @@ const ProductInfo = styled.div`
   flex: 1 1 40%;
   padding-left: 3em;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 365px) {
     flex: 1 1 100%;
     height: 17em;
     align-items: baseline;
