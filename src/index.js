@@ -20,6 +20,8 @@ const store = createStore(
 
 store.dispatch(getAllProducts())
 
+store.getState()
+
 render(
   <Provider store={store}>
     <App />

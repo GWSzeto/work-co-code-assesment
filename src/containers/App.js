@@ -5,12 +5,19 @@ import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
 import shoppingCart from '../shopping-cart.svg'
 import styled from 'styled-components'
+import Modal from 'react-modal'
 
 const Title = styled.h1`
   display: flex;
-  flex: 1 1 90%;
+  flex: 1 1 70%;
   font-weight: 900;
   font-size: 32pt;
+  margin-bottom: 0;
+
+  /* mobile */
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 0
+  }
 `
 
 export const Line = styled.hr`
@@ -38,12 +45,14 @@ const Button = styled.button`
   border: none;
   background-color: inherit;
   align-items: baseline;
-  font-size: 12pt;
+  font-size: 17pt;
 `
 
 const CartText = styled.p`
   display: flex;
 `
+
+Modal.setAppElement(document.getElementById('root'))
 
 const App = ({ toggleModal }) => (
   <div>
@@ -56,7 +65,6 @@ const App = ({ toggleModal }) => (
     </Header>
     <Line/>
     <ProductsContainer />
-    <Line/>
     <CartContainer />
   </div>
 )

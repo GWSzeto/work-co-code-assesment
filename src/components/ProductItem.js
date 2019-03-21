@@ -14,6 +14,11 @@ const Button = styled.button`
   height: 2.5em;
   width: 10em;
   margin: 14em 0 0 33em;
+
+  @media only screen and (max-width: 768px) {
+    margin: 26em 0 0 2em;
+    font-size: 17pt;
+  }
 `
 
 const ProductItem = ({className, product, onAddToCartClicked }) => (

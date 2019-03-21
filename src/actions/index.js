@@ -5,14 +5,14 @@ export const toggleModal = () => ({
     type: types.TOGGLE_MODAL
 })
 
-const receiveProducts = products => ({
+export const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products
 })
 
-
-
-export const getAllProducts = () => dispatch => {
+export const getAllProducts = () => async dispatch => {
+  // const products = await shop.getProducts()
+  // dispatch(recieveProducts(products))
   shop.getProducts(products => {
     dispatch(receiveProducts(products))
   })

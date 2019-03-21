@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CartProduct from './CartProduct'
-import Modal from 'react-responsive-modal'
+import Modal from 'react-modal'
 import styled from 'styled-components'
 import { Line } from '../containers/App'
 import shoppingCart from '../shopping-cart.svg'
 import CartAmountText from './CartAmountText'
+import './Cart.css'
 
 const modalStyles = {
   modal: {
@@ -20,6 +21,11 @@ const modalStyles = {
     width: "3em",
     opacity: "0.3",
   }
+}
+
+const modalClassNames = {
+  modal: "modal",
+  closeIcon: "closeIcon",
 }
 
 const CartLayout = styled.div`
@@ -73,6 +79,13 @@ const CheckoutButton = styled.button`
   width: 10em;
 `
 
+const closeButton = styled.button`
+  border: none;
+  background-color: inherit;
+  font-size: 16pt;
+  color: #9a9a9a;
+`
+
 const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, removeFromCart }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
@@ -97,11 +110,9 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, rem
   const subtotal = Number(total)
   const taxes = subtotal * 0.08067838643
   const totalAmount = subtotal + taxes
-  console.log(typeof subtotal)
-  console.log(typeof taxes)
-  console.log(typeof totalAmount)
   return (
-    <Modal open={modalOpen} onClose={toggleModal} styles={modalStyles} >
+    <Modal isOpen={modalOpen} >
+      <closeButton onClick={toggleModal}>X</closeButton>
       <CartLayout>
         <Title>Your Cart</Title>
         <Line />
