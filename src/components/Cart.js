@@ -5,6 +5,7 @@ import Modal from 'react-responsive-modal'
 import styled from 'styled-components'
 import { Line } from '../containers/App'
 import shoppingCart from '../shopping-cart.svg'
+import CartAmountText from './CartAmountText'
 
 const modalStyles = {
   modal: {
@@ -57,6 +58,21 @@ const EmptyCartText = styled.p`
   color: #a6a6a6;
 `
 
+const CheckoutButton = styled.button`
+  display: flex;
+  flex: 1 1 100%;
+  background-color: #5e97d1;
+  border: none;
+  font-size: 16pt;
+  border-radius: 2em;
+  color: white;
+  margin-top: 1em;
+  margin-left: -0.3em;
+  justify-content: center;
+  height: 3em;
+  width: 10em;
+`
+
 const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, removeFromCart }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
@@ -77,7 +93,13 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, rem
       <EmptyCartText>Please add some products to cart.</EmptyCartText>
     </EmptyCart>
   )
-
+  
+  const subtotal = Number(total)
+  const taxes = subtotal * 0.08067838643
+  const totalAmount = subtotal + taxes
+  console.log(typeof subtotal)
+  console.log(typeof taxes)
+  console.log(typeof totalAmount)
   return (
     <Modal open={modalOpen} onClose={toggleModal} styles={modalStyles} >
       <CartLayout>
@@ -86,11 +108,15 @@ const Cart  = ({ modalOpen, products, total, onCheckoutClicked, toggleModal, rem
         <div>{nodes}</div>
         {hasProducts ? (
           <div>
-            <p>Total: &#36;{total}</p>
-            <button onClick={onCheckoutClicked}
+            <Line />
+            <CartAmountText title="Subtotal" amount={`$${parseFloat(subtotal).toFixed(2)}`} />
+            <CartAmountText title="Taxes" amount={`$${parseFloat(taxes).toFixed(2)}`} /> 
+            <Line />
+            <CartAmountText title="Total" amount={`$${parseFloat(totalAmount).toFixed(2)}`} />
+            <CheckoutButton onClick={onCheckoutClicked}
               disabled={hasProducts ? '' : 'disabled'}>
-              Checkout
-            </button>
+              CHECKOUT
+            </CheckoutButton>
           </div>
         ) : null}
       </ CartLayout>
